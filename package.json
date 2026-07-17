@@ -1,0 +1,19 @@
+{
+  "name": "ai-engineering-workshop",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Workshop interno de AI Engineering: agent loops con Responses API y Chat Completions.",
+  "keywords": [
+    "ai",
+    "agents",
+    "openai",
+    "deepseek",
+    "workshop"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "openai": "^6.46.0"
+  }
+}
