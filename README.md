@@ -22,6 +22,23 @@ Incluye dos implementaciones del mismo agente para comparar formatos de API:
 
 [Ver material y documentación de W01](./w01-agent-loop/README.md)
 
+### W02 — Tools y funciones
+
+Diseño de tools, schemas, dispatch, errores accionables y continuidad del agent
+loop después de cada `tool_result`.
+
+[Ver presentación y recursos de W02](./w02-tools/README.md)
+
+### W04 — Skills y progressive disclosure
+
+Descubrimiento de skills, índice mínimo en el system prompt y carga bajo demanda
+de instrucciones y archivos adicionales.
+
+[Ver resumen y recursos de W04](./w04-skills/README.md)
+
+W02 y W04 usan el mismo agente, publicado como recurso independiente:
+[tools-workshop-agent](https://github.com/GBurgardt/tools-workshop-agent).
+
 ## Requisitos
 
 - Node.js 18 o superior
@@ -71,6 +88,8 @@ sugeridas.
 .
 ├── helpers/                 # Utilidades compartidas
 ├── w01-agent-loop/          # Workshop 01 y sus ejemplos
+├── w02-tools/               # Workshop 02: presentación y recursos
+├── w04-skills/              # Workshop 04: resumen y recursos
 ├── .env.example             # Variables de entorno requeridas
 ├── package.json             # Dependencias comunes
 └── README.md                # Índice general
@@ -78,6 +97,9 @@ sugeridas.
 
 Los próximos encuentros seguirán el formato `wNN-tema/`, manteniendo juntos el
 código y la documentación de cada workshop.
+
+El agente compartido por W02 y W04 vive en un repositorio separado para evitar
+duplicar código dentro de cada capítulo.
 
 ## Notas
 
@@ -89,4 +111,3 @@ código y la documentación de cada workshop.
 - Este código tiene fines educativos. Antes de usarlo en producción deben
   agregarse validación, límites de ejecución, manejo de errores, seguridad,
   persistencia y observabilidad.
-
