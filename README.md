@@ -29,6 +29,13 @@ loop después de cada `tool_result`.
 
 [Ver presentación y recursos de W02](./w02-tools/README.md)
 
+### W03 — Tracing y observabilidad
+
+Session, trace y span. Un asistente bancario en Google ADK para inspeccionar el
+camino de cada turno en ADK Web y persistir traces en Langfuse.
+
+[Ver material y documentación de W03](./w03-tracing-and-observability/README.md)
+
 ### W04 — Skills y progressive disclosure
 
 Descubrimiento de skills, índice mínimo en el system prompt y carga bajo demanda
@@ -41,13 +48,13 @@ W02 y W04 usan el mismo agente, publicado como recurso independiente:
 
 ## Requisitos
 
-- Node.js 18 o superior
-- npm
+- Node.js 18 o superior y npm (W01; W02 y W04 si se clona el agente compartido)
+- Python 3.12 o superior (W03)
 - API keys para los proveedores utilizados en cada ejemplo
 
 ## Preparación
 
-Instalar las dependencias:
+Para los ejemplos en Node, instalar dependencias desde la raíz:
 
 ```bash
 npm install
@@ -57,19 +64,26 @@ Crear un archivo `.env` a partir de `.env.example` y completar únicamente las
 credenciales necesarias:
 
 ```dotenv
+OPENWEATHER_KEY=
 OPENAI_API_KEY=
 OPENAI_MODEL=
 DEEPSEEK_API_KEY=
-OPENWEATHER_KEY=
 VERBOSE_OPENAI_RESPONSE=0
+GOOGLE_API_KEY=
+LANGFUSE_PUBLIC_KEY=
+LANGFUSE_SECRET_KEY=
+LANGFUSE_BASE_URL=https://cloud.langfuse.com
 ```
+
+W03 también puede usar un `.env` propio en `w03-tracing-and-observability/`.
+Las keys de Langfuse son opcionales: sin ellas ADK Web sigue andando.
 
 El archivo `.env` está ignorado por Git. Nunca deben subirse API keys al
 repositorio.
 
 ## Ejecutar un ejemplo
 
-Los ejemplos se ejecutan directamente con Node.
+W01 se ejecuta con Node:
 
 ```bash
 node w01-agent-loop/openai-responses-api.js
@@ -79,6 +93,15 @@ node w01-agent-loop/openai-responses-api.js
 node w01-agent-loop/deepseek-completions-api.js
 ```
 
+W03 se ejecuta con Google ADK, desde la raíz del repo:
+
+```bash
+pip install -r w03-tracing-and-observability/requirements.txt
+adk web
+```
+
+Elegir el agente `w03-tracing-and-observability`.
+
 Cada carpeta contiene su propio README con requisitos, conceptos y pruebas
 sugeridas.
 
@@ -86,17 +109,18 @@ sugeridas.
 
 ```text
 .
-├── helpers/                 # Utilidades compartidas
-├── w01-agent-loop/          # Workshop 01 y sus ejemplos
-├── w02-tools/               # Workshop 02: presentación y recursos
-├── w04-skills/              # Workshop 04: resumen y recursos
-├── .env.example             # Variables de entorno requeridas
-├── package.json             # Dependencias comunes
-└── README.md                # Índice general
+├── helpers/                          # Utilidades compartidas
+├── w01-agent-loop/                   # Workshop 01: loop del agente
+├── w02-tools/                        # Workshop 02: presentación y recursos
+├── w03-tracing-and-observability/    # Workshop 03: traces, ADK y Langfuse
+├── w04-skills/                       # Workshop 04: resumen y recursos
+├── .env.example                      # Variables de entorno requeridas
+├── package.json                      # Dependencias de los ejemplos en Node
+└── README.md                         # Índice general
 ```
 
-Los próximos encuentros seguirán el formato `wNN-tema/`, manteniendo juntos el
-código y la documentación de cada workshop.
+Los encuentros siguen el formato `wNN-tema/`, manteniendo juntos el código y la
+documentación de cada workshop.
 
 El agente compartido por W02 y W04 vive en un repositorio separado para evitar
 duplicar código dentro de cada capítulo.
