@@ -2,6 +2,7 @@
 
 ## Material
 
+- [Presentación — Skills & On-Demand Capabilities](./skills-on-demand-capabilities.pptx)
 - [Resumen del workshop](./RESUMEN.md)
 - [Agente usado en el workshop](https://github.com/GBurgardt/tools-workshop-agent)
 
