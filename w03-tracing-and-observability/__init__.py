@@ -56,7 +56,7 @@ def _setup_langfuse() -> None:
     except ImportError:
         print(
             "[w03] Faltan dependencias de Langfuse. "
-            "pip install -r w03_tracing_and_observability/requirements.txt"
+            "pip install -r w03-tracing-and-observability/requirements.txt"
         )
         return
 

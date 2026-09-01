@@ -100,8 +100,8 @@ OpenTelemetry
 Desde la raíz del repositorio:
 
 ```bash
-pip install -r w03_tracing_and_observability/requirements.txt
-cp w03_tracing_and_observability/.env.example w03_tracing_and_observability/.env
+pip install -r w03-tracing-and-observability/requirements.txt
+cp w03-tracing-and-observability/.env.example w03-tracing-and-observability/.env
 ```
 
 Completar en `.env`:
@@ -126,7 +126,7 @@ Desde la raíz del repo:
 adk web
 ```
 
-Elegir el agente `w03_tracing_and_observability` (`asistente_banco`).
+Elegir el agente `w03-tracing-and-observability` (`asistente_banco`).
 
 Si Langfuse está bien configurado, en la consola debería aparecer
 `Langfuse OK — traces visibles en el dashboard`. Si no, el mensaje indica qué
