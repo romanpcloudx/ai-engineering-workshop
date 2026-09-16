@@ -1,0 +1,41 @@
+{
+  "name": "outlook_email_agent",
+  "description": "Remote Outlook specialist. Sends email only when given recipients, subject, body, and an explicit instruction to send.",
+  "supportedInterfaces": [
+    {
+      "url": "http://127.0.0.1:8000/a2a/outlook_agent",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "version": "0.0.1",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "defaultInputModes": [
+    "text/plain"
+  ],
+  "defaultOutputModes": [
+    "text/plain"
+  ],
+  "skills": [
+    {
+      "id": "outlook_email_agent",
+      "name": "model",
+      "description": "Remote Outlook specialist. Sends email only when given recipients, subject, body, and an explicit instruction to send. I am Agent B, a specialist that sends Outlook email. my only available operation is OUTLOOK_SEND_EMAIL. Never invent recipients, subject, or body. If any is missing, ask for it. Sending email is an external side effect: call the tool only when the current request explicitly asks to send the fully specified email. After the call, report success or the exact error concisely.",
+      "tags": [
+        "llm"
+      ]
+    },
+    {
+      "id": "outlook_email_agent-OUTLOOK_SEND_EMAIL",
+      "name": "OUTLOOK_SEND_EMAIL",
+      "description": "[Direct tool \u2014 call directly, no search or connection check needed beforehand.]\nSends an email with subject, body, recipients, and optional attachments via Microsoft Graph API. Supports comma-separated email addresses in the to_email field for multiple recipients. Accepts either a single file or a list of files as attachments. Attachments require a non-empty file with valid name and mimetype.",
+      "tags": [
+        "llm",
+        "tools"
+      ]
+    }
+  ]
+}

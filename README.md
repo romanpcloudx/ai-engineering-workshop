@@ -46,10 +46,51 @@ de instrucciones y archivos adicionales.
 W02 y W04 usan el mismo agente, publicado como recurso independiente:
 [tools-workshop-agent](https://github.com/GBurgardt/tools-workshop-agent).
 
+### W05 — MCP y A2A
+
+MCP conecta agentes con capacidades externas; A2A conecta agentes independientes.
+La sesión avanza desde un servidor MCP con una tool de suma hasta un caso
+integrador donde un agente generalista delega por A2A a un especialista de
+Outlook, que ejecuta `OUTLOOK_SEND_EMAIL` mediante MCP.
+
+- [Guía conceptual, ejemplos y comandos de W05](./w05-mcp-and-a2a/README.md)
+- [Presentación: Sesión 05 — MCP y A2A](./w05-mcp-and-a2a/sesion-05-mcp-a2a.pptx)
+
+#### Resumen conceptual de W05
+
+| MCP | A2A |
+|---|---|
+| Conecta una aplicación agente con tools, resources y prompts | Conecta agentes independientes mediante un contrato interoperable |
+| El client descubre el catálogo del MCP server y ejecuta la capacidad elegida | El cliente descubre una Agent Card y delega trabajo mediante messages o tasks |
+| La unidad operativa típica es una tool call | La unidad rastreable es una Task con estado, historial y artifacts |
+
+En A2A, la **Agent Card** publica identidad, endpoints, capacidades, formatos,
+seguridad y **Agent Skills**. Una skill explica qué sabe hacer el agente y qué
+entradas y salidas acepta. El discovery puede hacerse mediante la URI
+`/.well-known/agent-card.json`, un registro curado o configuración directa.
+
+Cuando el pedido requiere seguimiento, el servidor crea una **Task**. Sus
+estados no terminales incluyen `SUBMITTED` y `WORKING`; puede interrumpirse con
+`INPUT_REQUIRED` o `AUTH_REQUIRED`; y termina en `COMPLETED`, `FAILED`,
+`CANCELED` o `REJECTED`. `taskId` identifica el trabajo y `contextId` agrupa
+turnos y tasks relacionados.
+
+El `AgentExecutor` adapta la lógica interna del agente al protocolo y publica
+Tasks, actualizaciones y Artifacts en una `EventQueue`. El cliente puede recibir
+los cambios por polling, streaming SSE o push notifications.
+
+Los ejemplos avanzan en cuatro pasos:
+
+1. `mcp-minimo`: un client descubre y llama la tool `add` de un FastMCP server.
+2. `a2a`: Hello World hardcodeado, pero con Card, skill, Task, executor y stream.
+3. `a2a-langgraph`: el mismo contrato rodea un agente real con memoria y tool.
+4. `adk-a2a-mcp`: Agent A delega por A2A a Agent B; Agent B envía email mediante
+   la tool MCP `OUTLOOK_SEND_EMAIL`.
+
 ## Requisitos
 
 - Node.js 18 o superior y npm (W01; W02 y W04 si se clona el agente compartido)
-- Python 3.12 o superior (W03)
+- Python 3.12 o superior (W03 y W05)
 - API keys para los proveedores utilizados en cada ejemplo
 
 ## Preparación
@@ -114,6 +155,7 @@ sugeridas.
 ├── w02-tools/                        # Workshop 02: presentación y recursos
 ├── w03-tracing-and-observability/    # Workshop 03: traces, ADK y Langfuse
 ├── w04-skills/                       # Workshop 04: resumen y recursos
+├── w05-mcp-and-a2a/                  # Workshop 05: MCP, A2A y presentación
 ├── .env.example                      # Variables de entorno requeridas
 ├── package.json                      # Dependencias de los ejemplos en Node
 └── README.md                         # Índice general
