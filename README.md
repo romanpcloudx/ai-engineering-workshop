@@ -43,7 +43,7 @@ de instrucciones y archivos adicionales.
 
 [Ver resumen y recursos de W04](./w04-skills/README.md)
 
-W02 y W04 usan el mismo agente, publicado como recurso independiente:
+W02, W04 y W06 usan el mismo agente, publicado como recurso independiente:
 [tools-workshop-agent](https://github.com/GBurgardt/tools-workshop-agent).
 
 ### W05 — MCP y A2A
@@ -87,9 +87,17 @@ Los ejemplos avanzan en cuatro pasos:
 4. `adk-a2a-mcp`: Agent A delega por A2A a Agent B; Agent B envía email mediante
    la tool MCP `OUTLOOK_SEND_EMAIL`.
 
+### W06 — Subagentes y scope separation
+
+Contextos separados, perfiles y herramientas del hijo, delegación y retorno del
+informe al agente principal. Comparación de harnesses y demo mínima con el mismo
+agente de W02 y W04.
+
+[Ver presentación, transcripción y código de W06](./w06-subagents/README.md)
+
 ## Requisitos
 
-- Node.js 18 o superior y npm (W01; W02 y W04 si se clona el agente compartido)
+- Node.js 18 o superior y npm para W01; Node.js 20 o superior para el agente de W02, W04 y W06
 - Python 3.12 o superior (W03 y W05)
 - API keys para los proveedores utilizados en cada ejemplo
 
@@ -156,6 +164,7 @@ sugeridas.
 ├── w03-tracing-and-observability/    # Workshop 03: traces, ADK y Langfuse
 ├── w04-skills/                       # Workshop 04: resumen y recursos
 ├── w05-mcp-and-a2a/                  # Workshop 05: MCP, A2A y presentación
+├── w06-subagents/                   # Workshop 06: subagentes, presentación y transcripción
 ├── .env.example                      # Variables de entorno requeridas
 ├── package.json                      # Dependencias de los ejemplos en Node
 └── README.md                         # Índice general
@@ -164,7 +173,7 @@ sugeridas.
 Los encuentros siguen el formato `wNN-tema/`, manteniendo juntos el código y la
 documentación de cada workshop.
 
-El agente compartido por W02 y W04 vive en un repositorio separado para evitar
+El agente compartido por W02, W04 y W06 vive en un repositorio separado para evitar
 duplicar código dentro de cada capítulo.
 
 ## Notas
